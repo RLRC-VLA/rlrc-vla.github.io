@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Academic Project Page</title>
+  <title>RLRC: Reinforcement Learning-based Recovery for Compressed Vision-Language-Action Models</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -157,6 +157,34 @@
 <section class="section">
   <div class="container is-max-desktop">
 
+    <!-- Preliminary Study -->
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">Exploring the Application of Model Compression Techniques to VLAs</h2>
+        
+        <div class="columns is-centered">
+          <div class="column is-12">
+            <img src="static/images/exp.png" alt="EXP"/>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-12">
+            <img src="static/images/sparsevla_prune.png" alt="SparseVLA Prune"/>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <ul>
+            <li>Quantization has minimal impact on performance, while significantly reducing memory requirements and slightly improving inference speed.</li>
+            <li>Unstructured pruning has a smaller impact on performance, whereas structured pruning offers greater acceleration benefits.</li>
+            <li>The combination of quantization and pruning can further substantially compress the model.</li>
+            <li>The speedup gains from quantization diminish as the sparsity ratio increases.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <!-- Method -->
     <div class="columns is-centered">
       <div class="column">
@@ -207,32 +235,102 @@
     <div class="columns is-centered">
       <div class="column">
         <h2 class="title is-3">Experiments</h2>
-  
-        <div class="columns is-centered">
-          <div class="column is-14">
-            <img src="static/images/main_results.png" alt="Main Results"/>
-            <p class="has-text-centered">
-              <strong>Main Results.</strong> Comparison of task success rates and efficiency metrics.
-            </p>
-          </div>
-        </div>
 
+        <!-- Video Carousel Section -->
+        <section class="hero is-light is-small">
+          <div class="hero-body">
+            <div class="container">
+              <div id="results-carousel" class="carousel results-carousel">
+                <div class="item item-steve">
+                  <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/video_49-s_1.mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+                <div class="item item-chair-tp">
+                  <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/video_50-s_1.mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+                <div class="item item-shiba">
+                  <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/video_51-s_1.mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+                <div class="item item-fullbody">
+                  <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/video_13-s_1.mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+                <div class="item item-blueshirt">
+                  <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/video_21-s_1.mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+                <div class="item item-mask">
+                  <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/video_4-s_0.mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+                <div class="item item-coffee">
+                  <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/video_11-s_1.mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+                <div class="item item-toby">
+                  <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/video_56-s_1.mp4"
+                            type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div class="columns is-centered">
-          <div class="column is-6">
-            <img src="static/images/sft_rl_comparison.png" alt="Main Results" width="100%"/>
-            <p class="has-text-centered">
-              <strong>The training curves of SFT and RLFT.</strong>
-            </p>
+        <!-- Results Section -->
+        <section class="section">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered">
+              <div class="column is-14">
+                <img src="static/images/main_results.png" alt="Main Results"/>
+                <p class="has-text-centered">
+                  <strong>Main Results.</strong> Comparison of task success rates and efficiency metrics.
+                </p>
+              </div>
+            </div>
+
+            <div class="columns is-centered">
+              <div class="column is-6">
+                <img src="static/images/sft_rl_comparison.png" alt="Main Results" width="100%"/>
+                <p class="has-text-centered">
+                  <strong>The training curves of SFT and RLFT.</strong>
+                </p>
+              </div>
+              <div class="column is-6">
+                <img src="static/images/ppo_training_comparison_ft_vs_scratch.png" alt="Ablation Studies" width="100%"/>
+                <p class="has-text-centered">
+                  <strong>Post-SFT RLFT vs. Scratch RLFT.</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="content has-text-justified">
+              <ul>
+                <li>Post-pruning SFT requires only a small number of steps, whereas RL tends to enhance OOD generalization with increased training steps.</li>
+                <li>SFT is capable of recovering most of the performance lost due to pruning, while RL can further enhance the model, even surpassing the original VLA.</li>
+                <li>RLRC demonstrates highly competitive performance compared to other acceleration methods for VLA.</li>
+                <li>SFT prior to RL is essential during the performance recovery stage.</li>
+              </ul>
+            </div>
           </div>
-          <div class="column is-6">
-            <img src="static/images/ppo_training_comparison_ft_vs_scratch.png" alt="Ablation Studies" width="100%"/>
-            <p class="has-text-centered">
-              <strong>Post-SFT RLFT vs. Scratch RLFT.</strong>
-            </p>
-          </div>
-        </div>
-        
+        </section>
       </div>
     </div>
 
